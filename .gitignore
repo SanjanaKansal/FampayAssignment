@@ -1,0 +1,7 @@
+.idea
+venv
+
+.DS_Store
+celerybeat-schedule
+celerybeat-schedule.db
+celerybeat.pid
