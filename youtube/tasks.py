@@ -4,7 +4,7 @@ from celery import task
 from youtube import constants, dal, private
 
 
-@task(bind=True, max_retries=3)
+@task
 def get_latest_videos_from_youtube():
     """Returns Youtube latest data related to query 'football'.
 

@@ -14,7 +14,7 @@ This repository contains the solution in response to the assignment given by Fam
     ```
     q represents search query which is optional and search the stored videos on basis of title and description.
     sync_token which is returned from the response can be passed in the next api call to get the next set of videos from the database. If the sync_token is not passed, it will always return the latest videos.
-    Note: Both the API mentioned in the problem statement are combined into one endpoint. If q which is search query is passed, it serves as the SEARCH API, otherwise it serves as GET API.
+    Note: Both the API mentioned in the problem statement are combined into one. If q which is search query is passed, it serves as the SEARCH API, otherwise it serves as GET API.
 
     
 ## High Level Design
@@ -39,7 +39,7 @@ git clone https://github.com/SanjanaKansal/fampay_assignment
 ```
 Start the containers:
 ```sh
-DJANGO_SECRET_KEY=<django_secret_key>, YOUTUBE_API_KEY=<youtube_api_key> docker-compose up -d --remove-orphans
+docker-compose up -d --remove-orphans
 ```
 This will start the complete application and expose a service on port 8000 of the host. A postman collection is attached to give an example of all the APIs in Fampay.postman_collection.json file.
 
