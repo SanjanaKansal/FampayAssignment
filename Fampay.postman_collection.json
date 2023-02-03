@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "1b678c7f-7618-482b-bbf4-181351128bdf",
+		"name": "Fampay",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get videos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/youtube/videos/?q=football&sync_token=0",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"youtube",
+						"videos",
+						""
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "football"
+						},
+						{
+							"key": "sync_token",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

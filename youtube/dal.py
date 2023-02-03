@@ -6,11 +6,6 @@ from django.db.models import Q
 from youtube import models
 
 
-def get_latest_video():
-    """Returns the latest video stored in DB."""
-    return models.YoutubeVideo.objects.order_by('-published_datetime').first()
-
-
 def save_videos(videos_data):
     """Saves videos in DB."""
     if not videos_data['items']:
