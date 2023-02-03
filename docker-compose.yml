@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  rabbit:
+    hostname: rabbit
+    image: rabbitmq:3.6.0
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  appserver:
+    build: .
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    environment:
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+    volumes:
+      - .:/youtube
+    ports:
+      - "8000:8000"
+
+  celeryworker:
+    build: .
+    command: bash -c "celery worker -A custom_youtube -l info"
+    environment:
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+    volumes:
+      - .:/youtube
+    depends_on:
+      - rabbit
+
+  celerybeat:
+    build: .
+    command: bash -c "celery beat -A custom_youtube -l info"
+    environment:
+      - YOUTUBE_API_KEY=${YOUTUBE_API_KEY}
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+    volumes:
+      - .:/youtube
+    depends_on:
+      - rabbit

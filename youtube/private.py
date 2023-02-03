@@ -1,4 +1,5 @@
 import datetime
+import os
 
 import pytz
 from pyrfc3339 import generate
@@ -22,12 +23,13 @@ def _get_published_after():
 
 
 def get_params(
-    key=constants.API_KEY,
-    type='video',
-    order='date',
-    search_query=constants.PREDEFINED_SEARCH_QUERY,
-    part='snippet',
+    key: str = os.environ['YOUTUBE_API_KEY'],
+    type: str = 'video',
+    order: str = 'date',
+    search_query: str = constants.PREDEFINED_SEARCH_QUERY,
+    part: str = 'snippet',
 ):
+    """Returns params for Youtube Search API."""
     return {
         constants.AUTH_KEY: key,
         constants.TYPE_KEY: type,

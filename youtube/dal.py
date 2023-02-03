@@ -7,10 +7,12 @@ from youtube import models
 
 
 def get_latest_video():
+    """Returns the latest video stored in DB."""
     return models.YoutubeVideo.objects.order_by('-published_datetime').first()
 
 
 def save_videos(videos_data):
+    """Saves videos in DB."""
     if not videos_data['items']:
         return
     youtube_videos_list = []
@@ -26,10 +28,11 @@ def save_videos(videos_data):
                 published_datetime=snippet['publishedAt'],
             )
         )
-    models.YoutubeVideo.objects.bulk_create(youtube_videos_list)
+    models.YoutubeVideo.objects.bulk_create(youtube_videos_list, ignore_conflicts=True)
 
 
-def get_videos_and_sync_token(search_query, sync_token, limit=10):
+def get_videos_and_sync_token(search_query: str, sync_token: int, limit: int = 10):
+    """Returns latest videos from DB and the sync_token to get next set of videos."""
     if not sync_token:
         all_videos = models.YoutubeVideo.objects.order_by('-published_datetime')
     else:
@@ -55,7 +58,7 @@ def get_videos_and_sync_token(search_query, sync_token, limit=10):
     if not videos:
         return None, None
 
-    # Extend Videos
+    # Extend Videos limit till sync_token from the next element is not same.
     if all_videos.count() > limit:
         for i in range(min(all_videos.count(), limit)):
             if videos[-1]['published_datetime'].strftime('%s') != all_videos[

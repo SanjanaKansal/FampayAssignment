@@ -6,9 +6,9 @@ from youtube import constants, dal, private
 
 @task
 def get_latest_videos_from_youtube():
-    """Returns Youtube latest data related to query 'football' limited to 5 results by default.
+    """Returns Youtube latest data related to query 'football'.
 
-    Pass the params in private._get_params method for customised results.
+    Pass the params in private.get_params method for customised results.
 
     Reference:
             https://developers.google.com/youtube/v3/docs/search/list

@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0a7vkrq46j^j-0m4!$00*42g*42sx7m8wyab#@@vm&6-pgf*x_'
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -125,4 +125,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CELERY_BROKER_URL = 'amqp://localhost'
+CELERY_BROKER_URL = 'amqp://rabbit'
