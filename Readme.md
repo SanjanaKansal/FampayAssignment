@@ -21,7 +21,7 @@ This repository contains the solution in response to the assignment given by Fam
 The high-level architecture have 5 components which can be scaled independently.
 
 - Celery Beat: This is used to schedule the tasks for fetching videos from youtube every 10 secs.
-- Celery Worker: The worker picks up the tasks, exceutes them and saves the youtube data in database.
+- Celery Worker: The worker picks up the tasks, executes them and saves the youtube data in database.
 - RabbitMq: This is the message broker used to store the tasks which need to be executed.
 - Database: For simplicity, default database supported by Django is used i.e. sqlite3.
 - App Server: The server is running on port 8000 and exposes the endpoints to get the videos and search the videos.
@@ -35,7 +35,7 @@ You will need Docker and Docker Compose on the host in order to start the applic
 ## How to use
 Clone the repository:
 ```sh
-git clone https://github.com/SanjanaKansal/fampay_assignment
+git clone https://github.com/SanjanaKansal/FampayAssignment
 ```
 Start the containers:
 ```sh
